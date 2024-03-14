@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["frontend/**/*.ts"],
+  "compilerOptions": {},
+  "exclude": ["jest.config.ts", "frontend/**/*.test.ts", "frontend/**/*.spec.ts"]
+}
