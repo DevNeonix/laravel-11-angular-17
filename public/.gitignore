@@ -1,0 +1,9 @@
+# Ignora todo
+**/*
+
+# Excluye los dos archivos que deseas mantener
+!.gitignore
+!.htaccess
+!favicon.ico
+!index.php
+!robots.txt
