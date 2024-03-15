@@ -1,47 +1,58 @@
 {
   "root": true,
-  "ignorePatterns": ["!**/*"],
   "plugins": ["@nx"],
+  "ignorePatterns": [
+    "!**/*",
+    "**/*.mock.ts",
+    "**/*.mocks.ts",
+    "jest.config.ts",
+    "test-setup.ts",
+    "test-setup-ci.ts",
+    "jest-global-mocks.ts",
+    "frontend/app/pages/development",
+    "coverage"
+  ],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
-    },
-    {
       "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["./tsconfig.linter.json"]
+      },
       "extends": [
-        "plugin:@nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "./tools/lint/base",
+        "./tools/lint/prefer-arrow",
+        "./tools/lint/regex",
+        "./tools/lint/typescript",
+        "./tools/lint/angular",
+        "./tools/lint/deprecation",
+        "./tools/lint/import",
+        "./tools/lint/jsdoc",
+        "./tools/lint/rxjs",
+        "./tools/lint/ngrx"
       ],
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ]
+
       }
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@nx/angular-template"],
-      "rules": {}
+      "parser": "@angular-eslint/template-parser",
+      "extends": [
+        "plugin:@nx/angular-template",
+        "plugin:prettier/recommended",
+        "./tools/lint/templates",
+        "./tools/lint/html"
+      ]
+    },
+    {
+      "files": [
+        "*.spec.ts",
+        "*.test.module.ts"
+      ],
+      "extends": [
+        "./tools/lint/jest"
+      ]
     }
   ]
 }

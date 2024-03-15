@@ -64,6 +64,15 @@
       "options": {
         "buildTarget": "frontend:build"
       }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+          "maxWarnings": 0,
+          "lintFilePatterns": ["frontend/**/*.ts", "frontend/**/*.html"],
+          "exclude": ["**/node_modules/**"]
+      }
     }
   }
 }

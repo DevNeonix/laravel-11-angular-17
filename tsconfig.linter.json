@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "module": "ES2022"
+  },
+  "exclude": ["jest.config.ts", "test-setup.ts", "jest-global-mocks.ts"],
+  "include": ["frontend/**/*.ts"]
+}
