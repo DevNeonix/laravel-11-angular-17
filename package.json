@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "start": "nx serve",
-        "build": "nx build && sleep 5 && node ./post-build.js",
+        "build": "rm -rf public && git reset HEAD --hard && nx build && sleep 5 && node ./post-build.js",
         "test": "nx test",
         "lint": "nx lint frontend"
     },
